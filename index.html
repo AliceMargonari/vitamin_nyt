@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Bad Is a Suntan, Really? - The New York Times</title>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #ffffff;
+      color: #111;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 2px;
+    }
+    .logo img {
+      max-width: 30%;
+      height: auto;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .meta {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .subhead {
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .share-link {
+      color: #326891;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="nyt-logo.png" alt="The New York Times Logo">
+  </div>
+  <h1>How Bad Is a Suntan, Really?</h1>
+
+
+  <p>Although it’s important to get enough vitamin D — adults ages 19 to 70 should aim to get 600 international units (I.U.) of vitamin D per day — people often have misconceptions about how best to obtain it, experts said. Most adults with lighter skin can typically get enough vitamin D after spending up to 10 minutes outside at midday during the spring and summer months.</p>
+  <p>However, tanning can lead to skin cancer, and more. Sunburns have long been associated with an increased risk for skin cancer, but tanning raises the risk, too, said Dr. Patricia Farris, a dermatologist in Metairie. Moreover, studies also suggest that sunscreen does not significantly impair the body’s ability to make vitamin D from sunlight exposure.</p>
+  <p>Most people woefully under-apply sunscreen, Dr. Deng said. “They only apply about a quarter of the thickness that they’re supposed to apply,” she said.If you’re swimming, getting splashed with water or sweating, you should reapply every hour, even if it’s a waterproof sunscreen, she said. If you’re not getting wet, you should reapply every two hours.</p>
+
+  <br>
+  <p style="text-transform: uppercase; color: blue; margin-bottom: 30px;">
+  You may now close this tab and return to the survey  
+  </p>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const prolific_pid = params.get("prolific_pid");
+  const condition = params.get("condition");
+  const page_name = params.get("page_name");
+
+  // Replace visible URL to hide condition and page_name
+  if (prolific_pid) {
+    const cleanUrl = window.location.origin + window.location.pathname + "?prolific_pid=" + encodeURIComponent(prolific_pid);
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+
+  const entryTime = new Date();
+
+  const entryIds = {
+    prolific_pid: "entry.434492044",
+    condition: "entry.1225575535",
+    page_name: "entry.925161350",
+    entry_time: "entry.732388184",
+    exit_time: "entry.372350073",
+    time_spent: "entry.298480214"
+  };
+
+  window.addEventListener("unload", function () {
+    const exitTime = new Date();
+    const timeSpent = Math.round((exitTime - entryTime) / 1000);
+
+    const formData = new FormData();
+    formData.append(entryIds.prolific_pid, prolific_pid);
+    formData.append(entryIds.condition, condition);
+    formData.append(entryIds.page_name, page_name);
+    formData.append(entryIds.entry_time, entryTime.toISOString());
+    formData.append(entryIds.exit_time, exitTime.toISOString());
+    formData.append(entryIds.time_spent, timeSpent);
+
+    navigator.sendBeacon(
+      "https://docs.google.com/forms/d/e/1FAIpQLSejFwFYfb78Rkv92gxAFIWeTncFhEXpnMxnrFE-s-GLKWZ2NA/formResponse",
+      new URLSearchParams(formData)
+    );
+  });
+</script>
+
+
+</body>
+</html>
